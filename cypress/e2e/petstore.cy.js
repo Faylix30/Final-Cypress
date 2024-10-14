@@ -8,9 +8,10 @@ describe('login', () => {
         cy.get('[name="signon"]').click()
         cy.url().should('include', 'https://petstore.octoperf.com/actions/Catalog.action')
         cy.get('#MainImageContent > img').should('be.visible')
+        cy.get('#Banner > img').should('be.visible')
     })
 
-    it.only('Tc-buy bird', () => {
+    it('Tc-buy bird', () => {        
         cy.get('#SidebarContent > [href="/actions/Catalog.action?viewCategory=&categoryId=BIRDS"] > img').click()
         cy.url().should('include', 'https://petstore.octoperf.com/actions/Catalog.action?viewCategory=&categoryId=BIRDS')
         cy.get('h2').should('be.visible')
@@ -74,7 +75,6 @@ describe('login', () => {
         cy.get('#MenuContent').within(() => {
             cy.contains('Sign Out').click();
         });
-        // cy.get('[href="/actions/Account.action?signoff="]').click()
         cy.get('[href="/actions/Account.action?signonForm="]').should('be.visible')
 
     })
